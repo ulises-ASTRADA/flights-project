@@ -62,7 +62,7 @@ def upload_to_db(**kwargs):
     
     # Creating the table if it doesn't exist
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS test_db (
+    CREATE TABLE IF NOT EXISTS testdata (
         flight_date DATE,
         flight_status VARCHAR,
         departure_airport VARCHAR,
@@ -81,7 +81,7 @@ def upload_to_db(**kwargs):
     for index, row in collected_data_to_df.iterrows():
         cursor.execute(
             """
-            INSERT INTO test_db 
+            INSERT INTO testdata 
             (flight_date, flight_status, departure_airport, departure_timezone, arrival_airport, arrival_timezone, arrival_terminal, airline_name, flight_number) 
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
             """,
@@ -93,7 +93,7 @@ def upload_to_db(**kwargs):
     conn.commit()
 
     # Logging of the SELECT query
-    cursor.execute("SELECT * FROM test_db;")
+    cursor.execute("SELECT * FROM testdata;")
     rows = cursor.fetchall()
     for row in rows:
         print(row)

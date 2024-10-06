@@ -2025,3 +2025,45 @@ SyntaxError: invalid syntax
 [2024-10-06T20:56:01.862+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:56:01.862+0000] {dag.py:2941} INFO - Sync 1 DAGs
 [2024-10-06T20:56:01.887+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:56:01.887+0000] {dag.py:3722} INFO - Setting next_dagrun for flight_data_pipeline to 2024-10-06T00:00:00+00:00, run_after=2024-10-07T00:00:00+00:00
 [2024-10-06T20:56:01.905+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/flights_dag.py took 0.563 seconds
+[2024-10-06T20:56:32.288+0000] {processor.py:157} INFO - Started process (PID=82) to work on /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:56:32.290+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/flights_dag.py for tasks to queue
+[2024-10-06T20:56:32.291+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:56:32.291+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:56:32.855+0000] {processor.py:839} INFO - DAG(s) dict_keys(['flight_data_pipeline']) retrieved from /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:56:32.881+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:56:32.881+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2024-10-06T20:56:32.906+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:56:32.906+0000] {dag.py:3722} INFO - Setting next_dagrun for flight_data_pipeline to 2024-10-06T00:00:00+00:00, run_after=2024-10-07T00:00:00+00:00
+[2024-10-06T20:56:32.927+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/flights_dag.py took 0.643 seconds
+[2024-10-06T20:56:43.051+0000] {processor.py:157} INFO - Started process (PID=84) to work on /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:56:43.053+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/flights_dag.py for tasks to queue
+[2024-10-06T20:56:43.054+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:56:43.054+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:56:43.596+0000] {processor.py:839} INFO - DAG(s) dict_keys(['flight_data_pipeline']) retrieved from /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:56:43.629+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:56:43.628+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2024-10-06T20:56:43.662+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:56:43.662+0000] {dag.py:3722} INFO - Setting next_dagrun for flight_data_pipeline to 2024-10-06T00:00:00+00:00, run_after=2024-10-07T00:00:00+00:00
+[2024-10-06T20:56:43.686+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/flights_dag.py took 0.640 seconds
+[2024-10-06T20:56:48.751+0000] {processor.py:157} INFO - Started process (PID=86) to work on /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:56:48.753+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/flights_dag.py for tasks to queue
+[2024-10-06T20:56:48.754+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:56:48.754+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:56:49.384+0000] {processor.py:839} INFO - DAG(s) dict_keys(['flight_data_pipeline']) retrieved from /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:56:49.415+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:56:49.414+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2024-10-06T20:56:49.452+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:56:49.452+0000] {dag.py:3722} INFO - Setting next_dagrun for flight_data_pipeline to 2024-10-06T00:00:00+00:00, run_after=2024-10-07T00:00:00+00:00
+[2024-10-06T20:56:49.485+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/flights_dag.py took 0.738 seconds
+[2024-10-06T20:56:53.542+0000] {processor.py:157} INFO - Started process (PID=88) to work on /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:56:53.543+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/flights_dag.py for tasks to queue
+[2024-10-06T20:56:53.544+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:56:53.544+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:56:54.143+0000] {processor.py:839} INFO - DAG(s) dict_keys(['flight_data_pipeline']) retrieved from /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:56:54.168+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:56:54.167+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2024-10-06T20:56:54.192+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:56:54.192+0000] {dag.py:3722} INFO - Setting next_dagrun for flight_data_pipeline to 2024-10-06T00:00:00+00:00, run_after=2024-10-07T00:00:00+00:00
+[2024-10-06T20:56:54.213+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/flights_dag.py took 0.677 seconds
+[2024-10-06T20:57:24.342+0000] {processor.py:157} INFO - Started process (PID=90) to work on /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:57:24.343+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/flights_dag.py for tasks to queue
+[2024-10-06T20:57:24.344+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:57:24.344+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:57:24.963+0000] {processor.py:839} INFO - DAG(s) dict_keys(['flight_data_pipeline']) retrieved from /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:57:24.988+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:57:24.988+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2024-10-06T20:57:25.008+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:57:25.007+0000] {dag.py:3722} INFO - Setting next_dagrun for flight_data_pipeline to 2024-10-06T00:00:00+00:00, run_after=2024-10-07T00:00:00+00:00
+[2024-10-06T20:57:25.023+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/flights_dag.py took 0.685 seconds
+[2024-10-06T20:57:55.227+0000] {processor.py:157} INFO - Started process (PID=92) to work on /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:57:55.228+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/flights_dag.py for tasks to queue
+[2024-10-06T20:57:55.229+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:57:55.229+0000] {dagbag.py:536} INFO - Filling up the DagBag from /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:57:55.727+0000] {processor.py:839} INFO - DAG(s) dict_keys(['flight_data_pipeline']) retrieved from /opt/airflow/dags/flights_dag.py
+[2024-10-06T20:57:55.755+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:57:55.755+0000] {dag.py:2941} INFO - Sync 1 DAGs
+[2024-10-06T20:57:55.781+0000] {logging_mixin.py:154} INFO - [2024-10-06T20:57:55.781+0000] {dag.py:3722} INFO - Setting next_dagrun for flight_data_pipeline to 2024-10-06T00:00:00+00:00, run_after=2024-10-07T00:00:00+00:00
+[2024-10-06T20:57:55.803+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/flights_dag.py took 0.581 seconds
