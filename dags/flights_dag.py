@@ -58,16 +58,29 @@ def upload_to_db(**kwargs):
     # Here we create the table
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS testdata (
-        flight_date TEXT,
-        flight_status TEXT,
-        departure_airport TEXT,
-        departure_timezone TEXT,
-        arrival_airport TEXT,
-        arrival_timezone TEXT,
-        arrival_terminal TEXT,
-        airline_name TEXT,
-        flight_number TEXT
+        flight_date DATE NOT NULL,
+        flight_status VARCHAR,
+        departure_airport VARCHAR,
+        departure_timezone VARCHAR,
+        arrival_airport VARCHAR,
+        arrival_timezone VARCHAR,
+        arrival_terminal VARCHAR,
+        airline_name VARCHAR,
+        flight_number TEXT NOT NULL,
+        PRIMARY KEY (flight_date, flight_number)
     );
     """)
 
     conn.commit()
+
+
+    for flight, value in collected_data.iterrows():
+        cursor.execute(
+            "INSERT INTO people (flight_date, flight_status, departure_airport, departure_timezone, arrival_airport, arrival_timezone, arrival_terminal, airline_name, flight_number) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
+            (value['flight_date'], value['flight_status'], value['departure_airport'], value['departure_timezone'], value['arrival_airport'], value['arrival_timezone'], value['arrival_terminal'], value['airline_name'], value['flight_number'])
+        )
+    
+    cursor.close()
+    conn.close()
+
+    print("Data inserted successfully!")
