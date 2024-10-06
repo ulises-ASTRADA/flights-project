@@ -3,11 +3,6 @@
 This project takes an API related to flights, filter the results, clean the data and then upload the records to a postgres DB with the name testfligoo and populates a table named testdata
 
 ## Table of Contents
-- [Project Title](## Flights project for Fligoo
-
-A brief description of what this project does and who it's for.
-
-## Table of Contents
 - [Project Title](#project-title)
 - [Description](#description)
 - [Installation](#installation)
