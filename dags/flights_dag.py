@@ -73,7 +73,8 @@ def upload_to_db(**kwargs):
         arrival_timezone VARCHAR,
         arrival_terminal VARCHAR,
         airline_name VARCHAR,
-        flight_number TEXT DEFAULT 'UNKNOWN'
+        flight_number TEXT DEFAULT 'UNKNOWN',
+        PRIMARY KEY (flight_date, flight_number)
     );
     """)
 
