@@ -1,0 +1,127 @@
+[2024-10-06T19:25:35.129+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: flight_data_pipeline.fetch_flights_data scheduled__2024-02-07T00:00:00+00:00 [queued]>
+[2024-10-06T19:25:35.139+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: flight_data_pipeline.fetch_flights_data scheduled__2024-02-07T00:00:00+00:00 [queued]>
+[2024-10-06T19:25:35.140+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2024-10-06T19:25:35.158+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): fetch_flights_data> on 2024-02-07 00:00:00+00:00
+[2024-10-06T19:25:35.162+0000] {standard_task_runner.py:57} INFO - Started process 52 to run task
+[2024-10-06T19:25:35.166+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'flight_data_pipeline', 'fetch_flights_data', 'scheduled__2024-02-07T00:00:00+00:00', '--job-id', '81', '--raw', '--subdir', 'DAGS_FOLDER/flights_dag.py', '--cfg-path', '/tmp/tmp7imch09k']
+[2024-10-06T19:25:35.169+0000] {standard_task_runner.py:85} INFO - Job 81: Subtask fetch_flights_data
+[2024-10-06T19:25:35.188+0000] {logging_mixin.py:154} WARNING - /home/***/.local/lib/python3.8/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2024-10-06T19:25:35.232+0000] {task_command.py:416} INFO - Running <TaskInstance: flight_data_pipeline.fetch_flights_data scheduled__2024-02-07T00:00:00+00:00 [running]> on host 4630f5888709
+[2024-10-06T19:25:35.336+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='flight_data_pipeline' AIRFLOW_CTX_TASK_ID='fetch_flights_data' AIRFLOW_CTX_EXECUTION_DATE='2024-02-07T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-02-07T00:00:00+00:00'
+[2024-10-06T19:25:39.705+0000] {logging_mixin.py:154} INFO - Data fetched containing 1 rows
+[2024-10-06T19:25:39.709+0000] {logging_mixin.py:154} INFO - Data fetched containing 2 rows
+[2024-10-06T19:25:39.734+0000] {logging_mixin.py:154} INFO - Data fetched containing 3 rows
+[2024-10-06T19:25:39.746+0000] {logging_mixin.py:154} INFO - Data fetched containing 4 rows
+[2024-10-06T19:25:39.749+0000] {logging_mixin.py:154} INFO - Data fetched containing 5 rows
+[2024-10-06T19:25:39.756+0000] {logging_mixin.py:154} INFO - Data fetched containing 6 rows
+[2024-10-06T19:25:39.762+0000] {logging_mixin.py:154} INFO - Data fetched containing 7 rows
+[2024-10-06T19:25:39.766+0000] {logging_mixin.py:154} INFO - Data fetched containing 8 rows
+[2024-10-06T19:25:39.768+0000] {logging_mixin.py:154} INFO - Data fetched containing 9 rows
+[2024-10-06T19:25:39.770+0000] {logging_mixin.py:154} INFO - Data fetched containing 10 rows
+[2024-10-06T19:25:39.771+0000] {logging_mixin.py:154} INFO - Data fetched containing 11 rows
+[2024-10-06T19:25:39.772+0000] {logging_mixin.py:154} INFO - Data fetched containing 12 rows
+[2024-10-06T19:25:39.773+0000] {logging_mixin.py:154} INFO - Data fetched containing 13 rows
+[2024-10-06T19:25:39.774+0000] {logging_mixin.py:154} INFO - Data fetched containing 14 rows
+[2024-10-06T19:25:39.776+0000] {logging_mixin.py:154} INFO - Data fetched containing 15 rows
+[2024-10-06T19:25:39.777+0000] {logging_mixin.py:154} INFO - Data fetched containing 16 rows
+[2024-10-06T19:25:39.778+0000] {logging_mixin.py:154} INFO - Data fetched containing 17 rows
+[2024-10-06T19:25:39.780+0000] {logging_mixin.py:154} INFO - Data fetched containing 18 rows
+[2024-10-06T19:25:39.781+0000] {logging_mixin.py:154} INFO - Data fetched containing 19 rows
+[2024-10-06T19:25:39.783+0000] {logging_mixin.py:154} INFO - Data fetched containing 20 rows
+[2024-10-06T19:25:39.784+0000] {logging_mixin.py:154} INFO - Data fetched containing 21 rows
+[2024-10-06T19:25:39.785+0000] {logging_mixin.py:154} INFO - Data fetched containing 22 rows
+[2024-10-06T19:25:39.787+0000] {logging_mixin.py:154} INFO - Data fetched containing 23 rows
+[2024-10-06T19:25:39.788+0000] {logging_mixin.py:154} INFO - Data fetched containing 24 rows
+[2024-10-06T19:25:39.789+0000] {logging_mixin.py:154} INFO - Data fetched containing 25 rows
+[2024-10-06T19:25:39.790+0000] {logging_mixin.py:154} INFO - Data fetched containing 26 rows
+[2024-10-06T19:25:39.791+0000] {logging_mixin.py:154} INFO - Data fetched containing 27 rows
+[2024-10-06T19:25:39.793+0000] {logging_mixin.py:154} INFO - Data fetched containing 28 rows
+[2024-10-06T19:25:39.795+0000] {logging_mixin.py:154} INFO - Data fetched containing 29 rows
+[2024-10-06T19:25:39.796+0000] {logging_mixin.py:154} INFO - Data fetched containing 30 rows
+[2024-10-06T19:25:39.798+0000] {logging_mixin.py:154} INFO - Data fetched containing 31 rows
+[2024-10-06T19:25:39.799+0000] {logging_mixin.py:154} INFO - Data fetched containing 32 rows
+[2024-10-06T19:25:39.801+0000] {logging_mixin.py:154} INFO - Data fetched containing 33 rows
+[2024-10-06T19:25:39.803+0000] {logging_mixin.py:154} INFO - Data fetched containing 34 rows
+[2024-10-06T19:25:39.804+0000] {logging_mixin.py:154} INFO - Data fetched containing 35 rows
+[2024-10-06T19:25:39.805+0000] {logging_mixin.py:154} INFO - Data fetched containing 36 rows
+[2024-10-06T19:25:39.807+0000] {logging_mixin.py:154} INFO - Data fetched containing 37 rows
+[2024-10-06T19:25:39.808+0000] {logging_mixin.py:154} INFO - Data fetched containing 38 rows
+[2024-10-06T19:25:39.809+0000] {logging_mixin.py:154} INFO - Data fetched containing 39 rows
+[2024-10-06T19:25:39.810+0000] {logging_mixin.py:154} INFO - Data fetched containing 40 rows
+[2024-10-06T19:25:39.812+0000] {logging_mixin.py:154} INFO - Data fetched containing 41 rows
+[2024-10-06T19:25:39.813+0000] {logging_mixin.py:154} INFO - Data fetched containing 42 rows
+[2024-10-06T19:25:39.814+0000] {logging_mixin.py:154} INFO - Data fetched containing 43 rows
+[2024-10-06T19:25:39.815+0000] {logging_mixin.py:154} INFO - Data fetched containing 44 rows
+[2024-10-06T19:25:39.816+0000] {logging_mixin.py:154} INFO - Data fetched containing 45 rows
+[2024-10-06T19:25:39.817+0000] {logging_mixin.py:154} INFO - Data fetched containing 46 rows
+[2024-10-06T19:25:39.819+0000] {logging_mixin.py:154} INFO - Data fetched containing 47 rows
+[2024-10-06T19:25:39.820+0000] {logging_mixin.py:154} INFO - Data fetched containing 48 rows
+[2024-10-06T19:25:39.821+0000] {logging_mixin.py:154} INFO - Data fetched containing 49 rows
+[2024-10-06T19:25:39.822+0000] {logging_mixin.py:154} INFO - Data fetched containing 50 rows
+[2024-10-06T19:25:39.824+0000] {logging_mixin.py:154} INFO - Data fetched containing 51 rows
+[2024-10-06T19:25:39.825+0000] {logging_mixin.py:154} INFO - Data fetched containing 52 rows
+[2024-10-06T19:25:39.826+0000] {logging_mixin.py:154} INFO - Data fetched containing 53 rows
+[2024-10-06T19:25:39.827+0000] {logging_mixin.py:154} INFO - Data fetched containing 54 rows
+[2024-10-06T19:25:39.828+0000] {logging_mixin.py:154} INFO - Data fetched containing 55 rows
+[2024-10-06T19:25:39.829+0000] {logging_mixin.py:154} INFO - Data fetched containing 56 rows
+[2024-10-06T19:25:39.830+0000] {logging_mixin.py:154} INFO - Data fetched containing 57 rows
+[2024-10-06T19:25:39.831+0000] {logging_mixin.py:154} INFO - Data fetched containing 58 rows
+[2024-10-06T19:25:39.832+0000] {logging_mixin.py:154} INFO - Data fetched containing 59 rows
+[2024-10-06T19:25:39.833+0000] {logging_mixin.py:154} INFO - Data fetched containing 60 rows
+[2024-10-06T19:25:39.834+0000] {logging_mixin.py:154} INFO - Data fetched containing 61 rows
+[2024-10-06T19:25:39.835+0000] {logging_mixin.py:154} INFO - Data fetched containing 62 rows
+[2024-10-06T19:25:39.836+0000] {logging_mixin.py:154} INFO - Data fetched containing 63 rows
+[2024-10-06T19:25:39.837+0000] {logging_mixin.py:154} INFO - Data fetched containing 64 rows
+[2024-10-06T19:25:39.838+0000] {logging_mixin.py:154} INFO - Data fetched containing 65 rows
+[2024-10-06T19:25:39.839+0000] {logging_mixin.py:154} INFO - Data fetched containing 66 rows
+[2024-10-06T19:25:39.840+0000] {logging_mixin.py:154} INFO - Data fetched containing 67 rows
+[2024-10-06T19:25:39.841+0000] {logging_mixin.py:154} INFO - Data fetched containing 68 rows
+[2024-10-06T19:25:39.843+0000] {logging_mixin.py:154} INFO - Data fetched containing 69 rows
+[2024-10-06T19:25:39.844+0000] {logging_mixin.py:154} INFO - Data fetched containing 70 rows
+[2024-10-06T19:25:39.846+0000] {logging_mixin.py:154} INFO - Data fetched containing 71 rows
+[2024-10-06T19:25:39.847+0000] {logging_mixin.py:154} INFO - Data fetched containing 72 rows
+[2024-10-06T19:25:39.848+0000] {logging_mixin.py:154} INFO - Data fetched containing 73 rows
+[2024-10-06T19:25:39.849+0000] {logging_mixin.py:154} INFO - Data fetched containing 74 rows
+[2024-10-06T19:25:39.851+0000] {logging_mixin.py:154} INFO - Data fetched containing 75 rows
+[2024-10-06T19:25:39.852+0000] {logging_mixin.py:154} INFO - Data fetched containing 76 rows
+[2024-10-06T19:25:39.854+0000] {logging_mixin.py:154} INFO - Data fetched containing 77 rows
+[2024-10-06T19:25:39.855+0000] {logging_mixin.py:154} INFO - Data fetched containing 78 rows
+[2024-10-06T19:25:39.856+0000] {logging_mixin.py:154} INFO - Data fetched containing 79 rows
+[2024-10-06T19:25:39.857+0000] {logging_mixin.py:154} INFO - Data fetched containing 80 rows
+[2024-10-06T19:25:39.858+0000] {logging_mixin.py:154} INFO - Data fetched containing 81 rows
+[2024-10-06T19:25:39.860+0000] {logging_mixin.py:154} INFO - Data fetched containing 82 rows
+[2024-10-06T19:25:39.861+0000] {logging_mixin.py:154} INFO - Data fetched containing 83 rows
+[2024-10-06T19:25:39.862+0000] {logging_mixin.py:154} INFO - Data fetched containing 84 rows
+[2024-10-06T19:25:39.863+0000] {logging_mixin.py:154} INFO - Data fetched containing 85 rows
+[2024-10-06T19:25:39.864+0000] {logging_mixin.py:154} INFO - Data fetched containing 86 rows
+[2024-10-06T19:25:39.865+0000] {logging_mixin.py:154} INFO - Data fetched containing 87 rows
+[2024-10-06T19:25:39.866+0000] {logging_mixin.py:154} INFO - Data fetched containing 88 rows
+[2024-10-06T19:25:39.867+0000] {logging_mixin.py:154} INFO - Data fetched containing 89 rows
+[2024-10-06T19:25:39.899+0000] {logging_mixin.py:154} INFO - Data fetched containing 90 rows
+[2024-10-06T19:25:39.900+0000] {logging_mixin.py:154} INFO - Data fetched containing 91 rows
+[2024-10-06T19:25:39.905+0000] {logging_mixin.py:154} INFO - Data fetched containing 92 rows
+[2024-10-06T19:25:39.913+0000] {logging_mixin.py:154} INFO - Data fetched containing 93 rows
+[2024-10-06T19:25:39.917+0000] {logging_mixin.py:154} INFO - Data fetched containing 94 rows
+[2024-10-06T19:25:39.918+0000] {logging_mixin.py:154} INFO - Data fetched containing 95 rows
+[2024-10-06T19:25:39.920+0000] {logging_mixin.py:154} INFO - Data fetched containing 96 rows
+[2024-10-06T19:25:39.922+0000] {logging_mixin.py:154} INFO - Data fetched containing 97 rows
+[2024-10-06T19:25:39.924+0000] {logging_mixin.py:154} INFO - Data fetched containing 98 rows
+[2024-10-06T19:25:39.925+0000] {logging_mixin.py:154} INFO - Data fetched containing 99 rows
+[2024-10-06T19:25:39.927+0000] {logging_mixin.py:154} INFO - Data fetched containing 100 rows
+[2024-10-06T19:25:39.929+0000] {python.py:194} INFO - Done. Returned value was:    flight_date flight_status  ...        airline_name flight_number
+0   2024-10-07        active  ...            Oman Air          5559
+1   2024-10-07        active  ...            AlphaSky          7349
+2   2024-10-07        active  ...              Qantas           140
+3   2024-10-07        active  ...     Air New Zealand           211
+4   2024-10-07        active  ...     United Airlines          6795
+..         ...           ...  ...                 ...           ...
+95  2024-10-07        active  ...                None          4199
+96  2024-10-07        active  ...           T'Way Air           170
+97  2024-10-07        active  ...                None          5912
+98  2024-10-07        active  ...  Singapore Airlines          8564
+99  2024-10-07        active  ...      Peach Aviation           898
+
+[100 rows x 9 columns]
+[2024-10-06T19:25:40.255+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=flight_data_pipeline, task_id=fetch_flights_data, execution_date=20240207T000000, start_date=20241006T192535, end_date=20241006T192540
+[2024-10-06T19:25:40.310+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2024-10-06T19:25:40.371+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

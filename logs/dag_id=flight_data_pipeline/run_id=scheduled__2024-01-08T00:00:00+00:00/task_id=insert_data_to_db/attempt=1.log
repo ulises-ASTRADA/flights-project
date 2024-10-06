@@ -1,0 +1,23 @@
+[2024-10-06T19:14:33.795+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: flight_data_pipeline.insert_data_to_db scheduled__2024-01-08T00:00:00+00:00 [queued]>
+[2024-10-06T19:14:33.804+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: flight_data_pipeline.insert_data_to_db scheduled__2024-01-08T00:00:00+00:00 [queued]>
+[2024-10-06T19:14:33.804+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2024-10-06T19:14:33.819+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): insert_data_to_db> on 2024-01-08 00:00:00+00:00
+[2024-10-06T19:14:33.824+0000] {standard_task_runner.py:57} INFO - Started process 332 to run task
+[2024-10-06T19:14:33.827+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'flight_data_pipeline', 'insert_data_to_db', 'scheduled__2024-01-08T00:00:00+00:00', '--job-id', '21', '--raw', '--subdir', 'DAGS_FOLDER/flights_dag.py', '--cfg-path', '/tmp/tmp3zl2o54e']
+[2024-10-06T19:14:33.829+0000] {standard_task_runner.py:85} INFO - Job 21: Subtask insert_data_to_db
+[2024-10-06T19:14:33.849+0000] {logging_mixin.py:154} WARNING - /home/***/.local/lib/python3.8/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2024-10-06T19:14:33.892+0000] {task_command.py:416} INFO - Running <TaskInstance: flight_data_pipeline.insert_data_to_db scheduled__2024-01-08T00:00:00+00:00 [running]> on host ea71d0098a44
+[2024-10-06T19:14:34.009+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='flight_data_pipeline' AIRFLOW_CTX_TASK_ID='insert_data_to_db' AIRFLOW_CTX_EXECUTION_DATE='2024-01-08T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-01-08T00:00:00+00:00'
+[2024-10-06T19:14:34.034+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/flights_dag.py", line 77, in upload_to_db
+    for flight, value in collected_data.iterrows():
+AttributeError: 'NoneType' object has no attribute 'iterrows'
+[2024-10-06T19:14:34.048+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=flight_data_pipeline, task_id=insert_data_to_db, execution_date=20240108T000000, start_date=20241006T191433, end_date=20241006T191434
+[2024-10-06T19:14:34.065+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 21 for task insert_data_to_db ('NoneType' object has no attribute 'iterrows'; 332)
+[2024-10-06T19:14:34.092+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-10-06T19:14:34.116+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

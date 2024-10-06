@@ -1,0 +1,27 @@
+[2024-10-06T19:25:56.568+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: flight_data_pipeline.upload_to_db scheduled__2024-02-07T00:00:00+00:00 [queued]>
+[2024-10-06T19:25:56.578+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: flight_data_pipeline.upload_to_db scheduled__2024-02-07T00:00:00+00:00 [queued]>
+[2024-10-06T19:25:56.579+0000] {taskinstance.py:1361} INFO - Starting attempt 1 of 1
+[2024-10-06T19:25:56.594+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): upload_to_db> on 2024-02-07 00:00:00+00:00
+[2024-10-06T19:25:56.599+0000] {standard_task_runner.py:57} INFO - Started process 99 to run task
+[2024-10-06T19:25:56.603+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'flight_data_pipeline', 'upload_to_db', 'scheduled__2024-02-07T00:00:00+00:00', '--job-id', '84', '--raw', '--subdir', 'DAGS_FOLDER/flights_dag.py', '--cfg-path', '/tmp/tmppthcohe2']
+[2024-10-06T19:25:56.606+0000] {standard_task_runner.py:85} INFO - Job 84: Subtask upload_to_db
+[2024-10-06T19:25:56.627+0000] {logging_mixin.py:154} WARNING - /home/***/.local/lib/python3.8/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2024-10-06T19:25:56.672+0000] {task_command.py:416} INFO - Running <TaskInstance: flight_data_pipeline.upload_to_db scheduled__2024-02-07T00:00:00+00:00 [running]> on host 4630f5888709
+[2024-10-06T19:25:56.767+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='flight_data_pipeline' AIRFLOW_CTX_TASK_ID='upload_to_db' AIRFLOW_CTX_EXECUTION_DATE='2024-02-07T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-02-07T00:00:00+00:00'
+[2024-10-06T19:25:57.125+0000] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/flights_dag.py", line 78, in upload_to_db
+    cursor.execute(
+psycopg2.errors.NotNullViolation: null value in column "flight_number" of relation "testdata" violates not-null constraint
+DETAIL:  Failing row contains (2024-10-07, active, Weipa, Australia/Brisbane, Cairns, Australia/Brisbane, 1, empty, null).
+
+[2024-10-06T19:25:57.138+0000] {taskinstance.py:1400} INFO - Marking task as FAILED. dag_id=flight_data_pipeline, task_id=upload_to_db, execution_date=20240207T000000, start_date=20241006T192556, end_date=20241006T192557
+[2024-10-06T19:25:57.154+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 84 for task upload_to_db (null value in column "flight_number" of relation "testdata" violates not-null constraint
+DETAIL:  Failing row contains (2024-10-07, active, Weipa, Australia/Brisbane, Cairns, Australia/Brisbane, 1, empty, null).
+; 99)
+[2024-10-06T19:25:57.202+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2024-10-06T19:25:57.226+0000] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

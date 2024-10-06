@@ -6,21 +6,20 @@ import pandas as pd
 import psycopg2
 
 
-#Here we define the constants to connect to the API
+# Define the constants to connect to the API
 ACCESS_KEY = '13824a221d87297fe2e6bc3c8ee20a94'
 BASE_URL = 'https://api.aviationstack.com/v1/'
 
 
-def fetch_flights_data():
+def fetch_flights_data(**kwargs):
 
     api_result = requests.get(f'{BASE_URL}flights?access_key={ACCESS_KEY}&limit=100&flight_status=active')
 
     flights = api_result.json()
 
-    #Here we access the columns we are interested in
+    # Access the columns we are interested in
     flights_data = flights['data']
 
-    #We create an empty list to save the records
     collected_data = []
 
     for flight in flights_data:
@@ -30,21 +29,27 @@ def fetch_flights_data():
             'departure_airport': flight['departure']['airport'],
             'departure_timezone': flight['departure']['timezone'],
             'arrival_airport': flight['arrival']['airport'],
-            'arrival_timezone' : flight['arrival']['timezone'],
-            'arrival_terminal' : flight['arrival']['terminal'],
+            'arrival_timezone': flight['arrival']['timezone'],
+            'arrival_terminal': flight['arrival'].get('terminal', None),  # Handle missing terminal values
             'airline_name': flight['airline']['name'],
             'flight_number': flight['flight']['number']
         }
-
         collected_data.append(flight_info)
-        collected_data_to_df = pd.DataFrame(collected_data)
-        number_of_rows = len(collected_data_to_df)
-        print(f'Data fetched containing {number_of_rows} rows')
-    return collected_data
+
+    collected_data_to_df = pd.DataFrame(collected_data)
+    print(collected_data_to_df)
+
+    # Convert the DataFrame to a dictionary for the Xcom
+    kwargs['ti'].xcom_push(key='collected_data', value=collected_data_to_df.to_dict(orient='records'))
+    return collected_data_to_df
 
 
 def upload_to_db(**kwargs):
-    collected_data = kwargs['ti'].xcom_pull(task_ids='fetch_flights_data')
+
+    collected_data = kwargs['ti'].xcom_pull(task_ids='fetch_flights_data', key='collected_data')
+
+    # Convert the data back to a DataFrame
+    collected_data_to_df = pd.DataFrame(collected_data)
 
     conn = psycopg2.connect(
         dbname="testfligoo",
@@ -55,10 +60,10 @@ def upload_to_db(**kwargs):
     )
     cursor = conn.cursor()
     
-    # Here we create the table
+    # Creating the table if it doesn't exist
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS testdata (
-        flight_date DATE NOT NULL,
+    CREATE TABLE IF NOT EXISTS test_db (
+        flight_date DATE,
         flight_status VARCHAR,
         departure_airport VARCHAR,
         departure_timezone VARCHAR,
@@ -66,35 +71,49 @@ def upload_to_db(**kwargs):
         arrival_timezone VARCHAR,
         arrival_terminal VARCHAR,
         airline_name VARCHAR,
-        flight_number TEXT NOT NULL,
-        PRIMARY KEY (flight_date, flight_number)
+        flight_number TEXT DEFAULT 'UNKNOWN'
     );
     """)
 
     conn.commit()
 
-
-    for flight, value in collected_data.iterrows():
+    # Inserting rows into the table
+    for index, row in collected_data_to_df.iterrows():
         cursor.execute(
-            "INSERT INTO people (flight_date, flight_status, departure_airport, departure_timezone, arrival_airport, arrival_timezone, arrival_terminal, airline_name, flight_number) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
-            (value['flight_date'], value['flight_status'], value['departure_airport'], value['departure_timezone'], value['arrival_airport'], value['arrival_timezone'], value['arrival_terminal'], value['airline_name'], value['flight_number'])
+            """
+            INSERT INTO test_db 
+            (flight_date, flight_status, departure_airport, departure_timezone, arrival_airport, arrival_timezone, arrival_terminal, airline_name, flight_number) 
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """,
+            (row['flight_date'], row['flight_status'], row['departure_airport'], row['departure_timezone'],
+             row['arrival_airport'], row['arrival_timezone'], row['arrival_terminal'], row['airline_name'],
+             row['flight_number'])
         )
-    
+
+    conn.commit()
+
+    # Logging of the SELECT query
+    cursor.execute("SELECT * FROM test_db;")
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+
     cursor.close()
     conn.close()
 
-    print("Data inserted successfully!")
+    print("Data inserted and selected successfully!")
 
-#Here we create the DAG to execute the fetching and uploading on a daily basis
-with DAG('flight_data_pipeline', start_date=datetime(2024, 1, 1), schedule_interval='@daily') as dag:
+# We create the Airflow DAG
+with DAG('flight_data_pipeline', start_date=datetime(2024, 10, 5), schedule_interval='@daily') as dag:
     
     fetch_task = PythonOperator(
-        task_id='fetch_and_transform_data',
-        python_callable=fetch_flights_data
+        task_id='fetch_flights_data',
+        python_callable=fetch_flights_data,
+        provide_context=True
     )
     
     insert_task = PythonOperator(
-        task_id='insert_data_to_db',
+        task_id='upload_to_db',
         python_callable=upload_to_db,
         provide_context=True
     )

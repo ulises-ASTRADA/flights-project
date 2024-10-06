@@ -1,4 +1,3 @@
-version: '3'
 services:
   postgres:
     image: postgres:13
@@ -9,7 +8,12 @@ services:
     volumes:
       - postgres_db:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5434:5432"  # Use host port 5434 and container port 5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U airflow"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   airflow-webserver:
     image: apache/airflow:2.7.3

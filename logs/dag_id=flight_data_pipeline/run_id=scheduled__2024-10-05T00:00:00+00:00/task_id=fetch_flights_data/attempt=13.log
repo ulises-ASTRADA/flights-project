@@ -1,0 +1,41 @@
+[2024-10-06T20:51:52.626+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: flight_data_pipeline.fetch_flights_data scheduled__2024-10-05T00:00:00+00:00 [queued]>
+[2024-10-06T20:51:52.636+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: flight_data_pipeline.fetch_flights_data scheduled__2024-10-05T00:00:00+00:00 [queued]>
+[2024-10-06T20:51:52.637+0000] {taskinstance.py:1361} INFO - Starting attempt 13 of 13
+[2024-10-06T20:51:52.652+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): fetch_flights_data> on 2024-10-05 00:00:00+00:00
+[2024-10-06T20:51:52.657+0000] {standard_task_runner.py:57} INFO - Started process 48 to run task
+[2024-10-06T20:51:52.662+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'flight_data_pipeline', 'fetch_flights_data', 'scheduled__2024-10-05T00:00:00+00:00', '--job-id', '132', '--raw', '--subdir', 'DAGS_FOLDER/flights_dag.py', '--cfg-path', '/tmp/tmps77c9ydg']
+[2024-10-06T20:51:52.664+0000] {standard_task_runner.py:85} INFO - Job 132: Subtask fetch_flights_data
+[2024-10-06T20:51:52.685+0000] {logging_mixin.py:154} WARNING - /home/***/.local/lib/python3.8/site-packages/***/settings.py:195 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2024-10-06T20:51:52.730+0000] {task_command.py:416} INFO - Running <TaskInstance: flight_data_pipeline.fetch_flights_data scheduled__2024-10-05T00:00:00+00:00 [running]> on host 30df259d33f5
+[2024-10-06T20:51:52.832+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='flight_data_pipeline' AIRFLOW_CTX_TASK_ID='fetch_flights_data' AIRFLOW_CTX_EXECUTION_DATE='2024-10-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='13' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-10-05T00:00:00+00:00'
+[2024-10-06T20:52:00.837+0000] {logging_mixin.py:154} INFO -    flight_date flight_status  ...             airline_name flight_number
+0   2024-10-07        active  ...                 Oman Air          5559
+1   2024-10-07        active  ...         Rossiya Airlines          6622
+2   2024-10-07        active  ...                 AlphaSky          7349
+3   2024-10-07        active  ...                   IndiGo           284
+4   2024-10-07        active  ...                  Finnair          5050
+..         ...           ...  ...                      ...           ...
+95  2024-10-07        active  ...                Batik Air          6182
+96  2024-10-07        active  ...                 Lion Air           984
+97  2024-10-07        active  ...                     None          6849
+98  2024-10-07        active  ...               QantasLink          1423
+99  2024-10-07        active  ...  China Southern Airlines          5050
+
+[100 rows x 9 columns]
+[2024-10-06T20:52:00.861+0000] {python.py:194} INFO - Done. Returned value was:    flight_date flight_status  ...             airline_name flight_number
+0   2024-10-07        active  ...                 Oman Air          5559
+1   2024-10-07        active  ...         Rossiya Airlines          6622
+2   2024-10-07        active  ...                 AlphaSky          7349
+3   2024-10-07        active  ...                   IndiGo           284
+4   2024-10-07        active  ...                  Finnair          5050
+..         ...           ...  ...                      ...           ...
+95  2024-10-07        active  ...                Batik Air          6182
+96  2024-10-07        active  ...                 Lion Air           984
+97  2024-10-07        active  ...                     None          6849
+98  2024-10-07        active  ...               QantasLink          1423
+99  2024-10-07        active  ...  China Southern Airlines          5050
+
+[100 rows x 9 columns]
+[2024-10-06T20:52:00.947+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=flight_data_pipeline, task_id=fetch_flights_data, execution_date=20241005T000000, start_date=20241006T205152, end_date=20241006T205200
+[2024-10-06T20:52:00.981+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2024-10-06T20:52:01.003+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check
