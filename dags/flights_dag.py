@@ -84,3 +84,19 @@ def upload_to_db(**kwargs):
     conn.close()
 
     print("Data inserted successfully!")
+
+#Here we create the DAG to execute the fetching and uploading on a daily basis
+with DAG('flight_data_pipeline', start_date=datetime(2024, 1, 1), schedule_interval='@daily') as dag:
+    
+    fetch_task = PythonOperator(
+        task_id='fetch_and_transform_data',
+        python_callable=fetch_flights_data
+    )
+    
+    insert_task = PythonOperator(
+        task_id='insert_data_to_db',
+        python_callable=upload_to_db,
+        provide_context=True
+    )
+
+    fetch_task >> insert_task
