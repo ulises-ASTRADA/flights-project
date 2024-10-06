@@ -49,7 +49,7 @@ We need to have Docker Desktop to run the code properly
 
 ## Usage
 
-I recommend creating a user here https://aviationstack.com/signup/free because we will need our own access_key in case that the access_key provided changed or if it reached the free usage monthly, once you've done this change
+I recommend creating a user here https://aviationstack.com/signup/free because we will need our own access_key in case that the access_key provided was changed or if it reached the free monthly usage, once you've done this change
 the ACCESS_KEY value on the file flights_dag.py inside the dags folder using your own access_key.
 
 ## To do
