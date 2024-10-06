@@ -3,6 +3,7 @@ from airflow.operators.python import PythonOperator
 from datetime import datetime
 import requests
 import pandas as pd
+import psycopg2
 
 
 #Here we define the constants to connect to the API
@@ -40,3 +41,33 @@ def fetch_flights_data():
         number_of_rows = len(collected_data_to_df)
         print(f'Data fetched containing {number_of_rows} rows')
     return collected_data
+
+
+def upload_to_db(**kwargs):
+    collected_data = kwargs['ti'].xcom_pull(task_ids='fetch_flights_data')
+
+    conn = psycopg2.connect(
+        dbname="testfligoo",
+        user="airflow",
+        password="airflow",
+        host="postgres",
+        port="5432"
+    )
+    cursor = conn.cursor()
+    
+    # Here we create the table
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS testdata (
+        flight_date TEXT,
+        flight_status TEXT,
+        departure_airport TEXT,
+        departure_timezone TEXT,
+        arrival_airport TEXT,
+        arrival_timezone TEXT,
+        arrival_terminal TEXT,
+        airline_name TEXT,
+        flight_number TEXT
+    );
+    """)
+
+    conn.commit()
