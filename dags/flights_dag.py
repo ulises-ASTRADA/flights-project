@@ -30,7 +30,7 @@ def fetch_flights_data(**kwargs):
             'departure_timezone': flight['departure']['timezone'],
             'arrival_airport': flight['arrival']['airport'],
             'arrival_timezone': flight['arrival']['timezone'],
-            'arrival_terminal': flight['arrival'].get('terminal', None),  # Handle missing terminal values
+            'arrival_terminal': flight['arrival'].get('terminal', None),  # If there are no terminal values
             'airline_name': flight['airline']['name'],
             'flight_number': flight['flight']['number']
         }
@@ -48,9 +48,11 @@ def upload_to_db(**kwargs):
 
     collected_data = kwargs['ti'].xcom_pull(task_ids='fetch_flights_data', key='collected_data')
 
-    # Convert the data back to a DataFrame
+    # Convert the data back to a DataFrame and replace the / for a - as requested
     collected_data_to_df = pd.DataFrame(collected_data)
-
+    collected_data_to_df['arrival_terminal'] = collected_data_to_df['arrival_terminal'].replace('/', '-', regex=True)
+    collected_data_to_df['departure_timezone'] = collected_data_to_df['departure_timezone'].replace('/', '-', regex=True)
+    
     conn = psycopg2.connect(
         dbname="testfligoo",
         user="airflow",
